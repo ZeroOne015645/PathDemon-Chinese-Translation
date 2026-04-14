@@ -42,76 +42,44 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							This algorithm is a <span>randomized</span> version
-							of the
-							<span> depth-first search</span> algorithm and is
-							one of the simplest ways to generate a maze using a
-							computer.
+							這個演算法是<span>深度優先搜尋 (Depth-First Search)</span> 演算法的<span>隨機化</span>版本，也是使用電腦生成迷宮最簡單的方法之一。
 						</p>
 						<p>
-							Consider the space for a maze being a large grid of
-							cells (like a large chess board), each cell starting
-							with <span>four walls</span>. Starting from a random
-							cell, the computer then selects a random
-							neighbouring cell that has not yet been visited. The
-							computer <span>removes </span>
-							the wall between the two cells and marks the new
-							cell as <span>visited</span>, and adds it to the
-							queue to facilitate backtracking.{" "}
+							將迷宮空間視為一個由許多單元格組成的大型網格（就像一個大型棋盤），每個單元格一開始都有<span>四面牆壁</span>。電腦從一個隨機的單元格開始，接著選擇一個尚未被訪問過的隨機相鄰單元格。電腦會<span>移除</span>兩個單元格之間的牆壁，將新單元格標記為<span>已訪問</span>，並將其加入佇列以利於後續的回溯 (Backtracking)。
 						</p>
 						<p>
-							The computer continues this process, with a cell
-							that has <span>no unvisited neighbours</span> being
-							considered a <span>dead-end</span>. When at a
-							dead-end it <span>backtracks</span> through the path
-							until it reaches a cell with an unvisited neighbour,{" "}
-							<span>continuing the path generation</span> by
-							visiting this new, unvisited cell (creating a new
-							junction).{" "}
+							電腦持續這個過程，當一個單元格<span>沒有任何未訪問的相鄰單元格</span>時，就會被視為<span>死胡同 (Dead-end)</span>。當到達死胡同時，它會沿著路徑<span>回溯</span>，直到找到一個擁有未訪問相鄰單元格的單元格為止，接著訪問這個新的、未訪問的單元格來<span>繼續生成路徑</span>（從而建立新的分岔）。
 						</p>
 						<p>
-							This process continues until <span>every</span> cell
-							has been visited, causing the computer to backtrack
-							all the way <span>back to the beginning cell</span>.
-							We can be <span>sure</span> every cell is visited.
+							這個過程會一直持續，直到<span>每一個</span>單元格都被訪問過，此時電腦會一路回溯<span>回到起始單元格</span>。我們可以<span>確定</span>每一個單元格都被訪問到了。
 						</p>
 						<p>
-							Mazes generated with a{" "}
-							<span>depth-first search</span> have a{" "}
-							<span>low branching factor</span> and{" "}
-							<span>contain many long corridors</span>, because
-							the algorithm explores as far as possible along each
-							branch before backtracking.
+							使用<span>深度優先搜尋</span>生成的迷宮具有<span>較低的分支因子 (Branching factor)</span>，並且<span>包含許多長走廊</span>，因為該演算法會在回溯之前盡可能深地沿著每個分支探索。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								Choose the initial cell, mark it as visited and
-								push it to the queue
+								選擇初始單元格，標記為已訪問並將其推入佇列。
 							</li>
 
-							<li>While the queue is not empty</li>
+							<li>當佇列不為空時：</li>
 							<ol>
 								<li>
-									Pop a cell from the queue and make it a
-									current cell{" "}
+									從佇列中彈出 (Pop) 一個單元格並將其設為當前單元格。
 								</li>
 								<li>
-									If the current cell has any neighbours which
-									have not been visited{" "}
+									如果當前單元格有任何尚未被訪問過的相鄰單元格：
 								</li>
 								<ol>
-									<li>Push the current cell to the queue</li>
+									<li>將當前單元格推入佇列。</li>
 									<li>
-										Choose one of the unvisited neighbours
+										從未訪問的相鄰單元格中選擇一個。
 									</li>
 									<li>
-										Remove the wall between the current cell
-										and the chosen cell
+										移除當前單元格與所選單元格之間的牆壁。
 									</li>
 									<li>
-										Mark the chosen cell as visited and push
-										it to the queue
+										將所選單元格標記為已訪問並推入佇列。
 									</li>
 								</ol>
 							</ol>
@@ -123,27 +91,23 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							This algorithm is a randomized version of Kruskal's
-							algorithm.
+							這個演算法是 Kruskal 演算法的隨機化版本。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								Create a list of all walls, and create a set for
-								each cell, each containing just that one cell.
+								建立一個包含所有牆壁的列表，並為每個單元格建立一個集合，每個集合最初只包含該單元格本身。
 							</li>
 
-							<li>For each wall, in some random order:</li>
+							<li>以隨機順序遍歷每一面牆壁：</li>
 							<ol>
 								<li>
-									If the cells divided by this wall belong to
-									distinct sets:
+									如果被這面牆隔開的兩個單元格屬於不同的集合：
 								</li>
 								<ol>
-									<li>Remove the current wall.</li>
+									<li>移除當前牆壁。</li>
 									<li>
-										Join the sets of the formerly divided
-										cells.
+										將這兩個原本被隔開的單元格所在的集合聯集。
 									</li>
 								</ol>
 							</ol>
@@ -155,35 +119,29 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							This algorithm is a randomized version of Prim's
-							algorithm.
+							這個演算法是 Prim 演算法的隨機化版本。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
-							<li>Start with a grid full of walls.</li>
+							<li>從一個充滿牆壁的網格開始。</li>
 
 							<li>
-								Pick a cell, mark it as part of the maze. Add
-								the walls of the cell to the wall list.
+								隨機挑選一個單元格，將其標記為迷宮的一部分。將該單元格周圍的牆壁加入牆壁列表。
 							</li>
-							<li>While there are walls in the list:</li>
+							<li>當牆壁列表中還有牆壁時：</li>
 							<ol>
 								<li>
-									Pick a random wall from the list. If only
-									one of the cells that the wall divides is
-									visited, then:
+									從列表中隨機挑選一面牆。如果這面牆所隔開的兩個單元格中，只有一個被訪問過，則：
 								</li>
 								<ol>
 									<li>
-										Make the wall a passage and mark the
-										unvisited cell as part of the maze.
+										將這面牆變成通道，並將那個未被訪問過的單元格標記為迷宮的一部分。
 									</li>
 									<li>
-										Add the neighboring walls of the cell to
-										the wall list.
+										將這個新加入單元格周圍的牆壁加入牆壁列表。
 									</li>
 								</ol>
-								<li>Remove the wall from the list.</li>
+								<li>將該牆壁從列表中移除。</li>
 							</ol>
 						</ol>
 					</>
@@ -193,20 +151,10 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							Mazes can be created with recursive division, an
-							algorithm which works as follows: Begin with the
-							maze's space with no walls. Call this a chamber.
-							Divide the chamber with a randomly positioned wall
-							(or multiple walls) where each wall contains a
-							randomly positioned passage opening within it. Then
-							recursively repeat the process on the subchambers
-							until all chambers are minimum sized.
+							可以使用遞迴分割法 (Recursive Division) 來建立迷宮，其運作方式如下：從一個沒有任何牆壁的迷宮空間開始，我們稱之為一個隔間 (Chamber)。用隨機位置的牆壁（或多面牆）將隔間一分為二，每面牆上都包含一個隨機位置的通道開口。接著，對劃分出的子隔間遞迴重複此過程，直到所有隔間都達到最小尺寸。
 						</p>
 						<p>
-							{" "}
-							This method results in mazes with long straight
-							walls crossing their space, making it easier to see
-							which areas to avoid.
+							這種方法產生的迷宮會有一些長而直的牆壁橫跨整個空間，使得人們更容易看出哪些區域是死路而應當避開。
 						</p>
 					</>
 				);
@@ -215,34 +163,30 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							The Aldous-Broder algorithm, due to it's randomness,
-							produces uniform spanning trees.
+							Aldous-Broder 演算法由於其隨機性，能夠產生均勻生成樹 (Uniform spanning trees)。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								Pick a random cell as the current cell and mark
-								it as visited.
+								隨機挑選一個單元格作為當前單元格，並將其標記為已訪問。
 							</li>
 
-							<li>While there are unvisited cells:</li>
+							<li>當還有未被訪問過的單元格時：</li>
 							<ol>
-								<li>Pick a random neighbour.</li>
+								<li>隨機挑選一個相鄰單元格。</li>
 								<li>
-									If the chosen neighbour has not been
-									visited:
+									如果所選的相鄰單元格尚未被訪問過：
 								</li>
 								<ol>
 									<li>
-										Remove the wall between the current cell
-										and the chosen neighbour.
+										移除當前單元格與所選相鄰單元格之間的牆壁。
 									</li>
 									<li>
-										Mark the chosen neighbour as visited.
+										將所選相鄰單元格標記為已訪問。
 									</li>
 								</ol>
 								<li>
-									Make the chosen neighbour the current cell.
+									將所選相鄰單元格設為當前單元格。
 								</li>
 							</ol>
 						</ol>
@@ -253,38 +197,13 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							All the above algorithms have <span>biases</span> of
-							various sorts: depth-first search is biased toward
-							long corridors, while Kruskal's/Prim's algorithms
-							are biased toward many short dead ends. Wilson's
-							algorithm, on the other hand, generates an
-							<span>unbiased</span> sample from the uniform
-							distribution over all mazes, using{" "}
-							<span>loop-erased random walks</span>.
+							上述所有演算法都有不同種類的<span>偏差 (Biases)</span>：深度優先搜尋偏好長走廊，而 Kruskal / Prim 演算法則偏好大量短小的死胡同。另一方面，Wilson 演算法使用<span>消除迴圈的隨機漫步 (Loop-erased random walks)</span>，能從所有迷宮的均勻分佈中產生<span>無偏差 (Unbiased)</span> 的樣本。
 						</p>
 						<p>
-							We begin the algorithm by initializing the maze with
-							<span>one cell chosen arbitrarily</span>. Then we
-							start at a new cell chosen arbitrarily, and{" "}
-							<span>
-								perform a random walk until we reach a cell
-								already in the maze
-							</span>{" "}
-							- however, if at any point the random walk reaches{" "}
-							<span>its own path</span>, forming a loop, we{" "}
-							<span>erase the loop</span> from the path before
-							proceeding. When the path reaches the maze, we{" "}
-							<span>add it to the maze</span>. Then we perform{" "}
-							<span>another</span>
-							loop-erased random walk from another arbitrary
-							starting cell, repeating until all cells have been
-							filled.
+							演算法開始時，我們先初始化迷宮，<span>任意選擇一個單元格加入迷宮</span>。接著，我們從另一個任意選擇的單元格開始，並<span>執行隨機漫步，直到我們走到一個已經在迷宮中的單元格</span>。然而，如果隨機漫步在任何時候走到了<span>它自己剛才走過的路徑</span>（形成了一個迴圈），我們在繼續前進之前會<span>將這個迴圈從路徑中消除</span>。當路徑接觸到迷宮主體時，我們<span>將這條路徑加入迷宮中</span>。接著，我們再從另一個任意起始點執行<span>另一次</span>消除迴圈的隨機漫步，重複這個過程直到所有單元格都被填滿。
 						</p>
 						<p>
-							This procedure remains unbiased no matter which
-							method we use to arbitrarily choose starting cells.
-							So we could always choose the first unfilled cell in
-							left-to-right, top-to-bottom order for simplicity.
+							無論我們使用哪種方法來任意選擇起始單元格，這個過程都能保持無偏差。因此，為了簡單起見，我們總是可以按照由左至右、由上至下的順序，選擇第一個尚未被填滿的單元格作為起點。
 						</p>
 					</>
 				);
@@ -298,66 +217,48 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							A* is an informed search algorithm and guarantees
-							the shortest path
+							A* 是一種啟發式搜尋 (Informed search) 演算法，保證能找到最短路徑。
 						</p>
 						<p>
-							A* is a combination of Dijkstra and Greedy. It uses
-							distance from the root node plus heuristics distance
-							to the goal. The algorithm terminates when we find
-							the goal node.
+							A* 是 Dijkstra 和貪婪演算法 (Greedy) 的結合。它利用「從起始節點出發的實際距離」加上「到達目標節點的啟發式預估距離」。當我們找到目標節點時，演算法就會終止。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								Assign dis[v] for all nodes = INT_MAX (distance
-								from root node + heuristics of every node).
+								將所有節點的距離 dis[v] 設為 INT_MAX（包含從起始節點出發的距離 + 每個節點的啟發值）。
 							</li>
 
 							<li>
-								Assign dis[root] = 0 + heuristic(root, goal)
-								(distance from root node to itself +
-								heuristics).
+								將起始節點的距離 dis[root] = 0 + heuristic(root, goal)（起始節點到自身的距離 + 啟發值）。
 							</li>
-							<li>Add root node to priority queue.</li>
+							<li>將起始節點加入優先佇列 (Priority queue)。</li>
 							<li>
-								Loop on the queue as long as it's not empty.
+								只要佇列不為空，就持續迴圈：
 							</li>
 							<ol>
 								<li>
-									In every loop, choose the node with the
-									minimum distance from the root node in the
-									queue + heuristic (root node will be
-									selected first).
+									在每次迴圈中，選擇佇列中（從起始點的距離 + 啟發值）最小的節點（起始節點會最先被選中）。
 								</li>
 								<li>
-									Remove the current chosen node from the
-									queue (vis[current] = true).
+									將當前選中的節點從佇列中移除 (vis[current] = true)。
 								</li>
 								<li>
-									If the current node is the goal node, then
-									return it.
+									如果當前節點是目標節點，則回傳它。
 								</li>
 								<li>
-									For every child of the current node, do the
-									following:
+									對當前節點的每一個子節點，執行以下操作：
 								</li>
 								<ol>
 									<li>
-										Assign temp = distance(root, current) +
-										distance(current, child) +
-										heuristic(child, goal).
+										指派 temp = distance(root, current) + distance(current, child) + heuristic(child, goal)。
 									</li>
 									<li>
-										If
-										{` temp < dis[child], then, assign dis[child] = temp`}
-										. This denotes a shorter path to child
-										node has been found.
+										如果
+										{` temp < dis[child]，則指派 dis[child] = temp`}
+										。這表示我們找到了一條通往子節點更短的路徑。
 									</li>
 									<li>
-										And, add child node to the queue if not
-										already in the queue (thus, it's now
-										marked as not visited again).
+										如果子節點不在佇列中，則將其加入佇列（因此它現在再次被標記為未訪問）。
 									</li>
 								</ol>
 							</ol>
@@ -369,65 +270,50 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							Dijkstra is an informed search algorithm and
-							guarantees the shortest path
+							Dijkstra 是一種啟發式搜尋演算法，保證能找到最短路徑。
 						</p>
 						<p>
-							Dijkstra's algorithm tries to find the shortest path
-							from the starting(root) node to every node, hence we
-							can get the shortest path from the starting node to
-							the goal.
+							Dijkstra 演算法試圖找出從起始（根）節點到每一個節點的最短路徑，因此我們可以得到從起始節點到目標的最短路徑。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								Assign dis[v] for all nodes = INT_MAX (distance
-								from root node to every other node).
+								將所有節點的距離 dis[v] 設為 INT_MAX（從起始節點到所有其他節點的距離）。
 							</li>
 
 							<li>
-								Assign dis[root] = 0(distance from root node to
-								itself).
+								將起始節點的距離 dis[root] = 0（起始節點到自身的距離）。
 							</li>
-							<li>Add all nodes to a priority queue.</li>
+							<li>將所有節點加入優先佇列。</li>
 							<li>
-								Loop on the queue as long as it's not empty.
+								只要佇列不為空，就持續迴圈：
 							</li>
 							<ol>
 								<li>
-									In every loop, choose the node with the
-									minimum distance from the root node in the
-									queue(root node will be selected first).
+									在每次迴圈中，選擇佇列裡距離起始節點最近的節點（起始節點會最先被選中）。
 								</li>
 								<li>
-									Remove the current chosen node from the
-									queue (vis[current] = true).
+									將當前選中的節點從佇列中移除 (vis[current] = true)。
 								</li>
 								<li>
-									If the current chosen node is the goal node,
-									then return it.
+									如果當前選中的節點是目標節點，則回傳它。
 								</li>
 								<li>
-									For every child of the current node, do the
-									following:
+									對當前節點的每一個子節點，執行以下操作：
 								</li>
 								<ol>
 									<li>
-										If child node is not already in the
-										queue (already visited), then skip this
-										iteration.
+										如果子節點不在佇列中（已被訪問過），則跳過本次迭代。
 									</li>
 									<li>
-										Assign temp = dis[current] + distance
-										from current to child node.
+										指派 temp = dis[current] + (從當前節點到子節點的距離)。
 									</li>
 									<li>
-										If{" "}
+										如果{" "}
 										{
-											"temp < dis[child], then, assign dis[child] = temp"
+											"temp < dis[child]，則指派 dis[child] = temp"
 										}
-										. This denotes a shorter path to child
-										node has been found.
+										。這表示我們找到了一條通往子節點更短的路徑。
 									</li>
 								</ol>
 							</ol>
@@ -439,60 +325,45 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							Greedy is an informed search algorithm but does not
-							guarantees the shortest path
+							貪婪演算法 (Greedy) 是一種啟發式搜尋演算法，但不保證能找到最短路徑。
 						</p>
 						<p>
-							Greedy is an algorithm which makes a choice based on
-							educated guesses(heuristics) at each stage. The node
-							with shortest heuristic distance from the goal node
-							will be explored next.
+							貪婪演算法在每個階段都會根據經驗法則（啟發式預估，Heuristics）做出選擇。啟發式距離目標節點最短的節點將會被優先探索。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								Assign dis[v] for all nodes = INT_MAX (distance
-								from every node to goal node).
+								將所有節點的距離 dis[v] 設為 INT_MAX（從每個節點到目標節點的預估距離）。
 							</li>
 
 							<li>
-								Assign dis[root] = 0(distance from root node to
-								itself).
+								將起始節點的距離 dis[root] = 0（起始節點到自身的距離）。
 							</li>
-							<li>Add root node to priority queue.</li>
+							<li>將起始節點加入優先佇列。</li>
 							<li>
-								Loop on the queue as long as it's not empty.
+								只要佇列不為空，就持續迴圈：
 							</li>
 							<ol>
 								<li>
-									In every loop, choose the node with the
-									minimum heuristic distance from the goal
-									node in the queue(root node will be selected
-									first).
+									在每次迴圈中，選擇佇列裡距離目標節點啟發式距離最小的節點（起始節點會最先被選中）。
 								</li>
 								<li>
-									Remove the current chosen node from the
-									queue (vis[current] = true).
+									將當前選中的節點從佇列中移除 (vis[current] = true)。
 								</li>
 								<li>
-									If the current chosen node is the goal node,
-									then return it.
+									如果當前選中的節點是目標節點，則回傳它。
 								</li>
 								<li>
-									For every child of the current node, do the
-									following:
+									對當前節點的每一個子節點，執行以下操作：
 								</li>
 								<ol>
 									<li>
-										If child node is already visited
-										(previously removed from the queue),
-										then skip this iteration.
+										如果子節點已經被訪問過（之前已從佇列中移除），則跳過本次迭代。
 									</li>
 									<li>
-										Assign dis[current] =
-										heuristics(current, goal).
+										指派 dis[current] = heuristics(current, goal)（即當前節點的啟發值）。
 									</li>
-									<li>Add child node to the queue.</li>
+									<li>將子節點加入佇列。</li>
 								</ol>
 							</ol>
 						</ol>
@@ -503,37 +374,30 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							Depth First Search is not an informed search
-							algorithm and does not guarantees the shortest path
+							深度優先搜尋 (Depth-First Search) 不是一種啟發式搜尋演算法，且不保證能找到最短路徑。
 						</p>
 						<p>
-							It starts at the root and explores one of it's
-							neighbor's sub tree, and then move to the next
-							neighbor's sub tree, and so on.
+							它從起始節點開始，探索其中一個相鄰節點的子樹，然後再移動到下一個相鄰節點的子樹，依此類推。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
-							<li>Add root node to the queue.</li>
+							<li>將起始節點加入佇列（此處實作通常為堆疊 Stack 行為）。</li>
 
 							<li>
-								Loop on the queue as long as it's not empty.
+								只要佇列不為空，就持續迴圈：
 							</li>
 							<ol>
 								<li>
-									Get the node at the top of the
-									queue(current), mark it as visited, and
-									remove it.
+									取得佇列頂部的節點 (current)，將其標記為已訪問並移除它。
 								</li>
 								<li>
-									For every non-visited neighbor of the
-									current node, do the following:
+									對當前節點的每一個未被訪問過的相鄰節點，執行以下操作：
 								</li>
 								<ol>
 									<li>
-										Check if it's the goal node, If so, then
-										return this neighbor node.
+										檢查它是否為目標節點。如果是，則回傳此相鄰節點。
 									</li>
-									<li>Otherwise, push it to the queue.</li>
+									<li>否則，將其推入佇列中。</li>
 								</ol>
 							</ol>
 						</ol>
@@ -544,41 +408,33 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							Depth First Search is not an informed search
-							algorithm but guarantees the shortest path
+							廣度優先搜尋 (Breadth-First Search) 不是一種啟發式搜尋演算法，但保證能找到最短路徑（在無權重圖中）。
 						</p>
 						<p>
-							It starts at the root and explores all of it's
-							neighbors in the next level before moving to each of
-							the root neighbors, and then, it explores the
-							neighbors of the root neighbors, and so on.
+							它從起始節點開始，在移動到下一層之前會先探索當前層級的所有相鄰節點。接著，它會探索這些相鄰節點的相鄰節點，依此類推。
 						</p>
-						<h3>Algorithm</h3>
+						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								Add root node to the queue, and mark it as
-								visited(already explored)
+								將起始節點加入佇列，並標記為已訪問（已探索過）。
 							</li>
 
 							<li>
-								Loop on the queue as long as it's not empty:
+								只要佇列不為空，就持續迴圈：
 							</li>
 							<ol>
 								<li>
-									Get and remove the node at the top of the
-									queue(current).
+									取得並移除佇列最前面的節點 (current)。
 								</li>
 								<li>
-									For every non-visited neighbor of the
-									current node, do the following:
+									對當前節點的每一個未被訪問過的相鄰節點，執行以下操作：
 								</li>
 								<ol>
-									<li>Mark it as visited.</li>
+									<li>將其標記為已訪問。</li>
 									<li>
-										Check if it's the goal node, If so, then
-										return it.
+										檢查它是否為目標節點。如果是，則回傳它。
 									</li>
-									<li>Otherwise, push it to the queue.</li>
+									<li>否則，將其推入佇列中。</li>
 								</ol>
 							</ol>
 						</ol>
@@ -610,7 +466,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 								}`}
 								onClick={() => setMainSection("mazes")}
 							>
-								MAZES
+								迷宮生成 (MAZES)
 							</button>
 							<button
 								className={`main-btn ${
@@ -620,7 +476,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 								}`}
 								onClick={() => setMainSection("searches")}
 							>
-								SEARCHES
+								尋路演算法 (SEARCHES)
 							</button>
 						</div>
 						<div className="content">
@@ -632,17 +488,11 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 									name={"maze"}
 									onChange={handleChange}
 								>
-									<MenuItem value={"DFS"}>DFS</MenuItem>
-									<MenuItem value={"Kruskal"}>
-										Kruskal
-									</MenuItem>
+									<MenuItem value={"DFS"}>DFS (深度優先)</MenuItem>
+									<MenuItem value={"Kruskal"}>Kruskal</MenuItem>
 									<MenuItem value={"Prim"}>Prim</MenuItem>
-									<MenuItem value={"Recursive"}>
-										Recursive
-									</MenuItem>
-									<MenuItem value={"Aldous-Broder"}>
-										Aldous-Broder
-									</MenuItem>
+									<MenuItem value={"Recursive"}>遞迴分割 (Recursive)</MenuItem>
+									<MenuItem value={"Aldous-Broder"}>Aldous-Broder</MenuItem>
 									<MenuItem value={"Wilson"}>Wilson</MenuItem>
 								</Select>
 							) : (
@@ -653,16 +503,10 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 									onChange={handleChange}
 								>
 									<MenuItem value={"A*"}>A*</MenuItem>
-									<MenuItem value={"Dijkstra"}>
-										Dijkstra
-									</MenuItem>
-									<MenuItem value={"Greedy"}>Greedy</MenuItem>
-									<MenuItem value={"Depth First"}>
-										Depth First
-									</MenuItem>
-									<MenuItem value={"Breadth First"}>
-										Breadth First
-									</MenuItem>
+									<MenuItem value={"Dijkstra"}>Dijkstra</MenuItem>
+									<MenuItem value={"Greedy"}>Greedy (貪婪)</MenuItem>
+									<MenuItem value={"Depth First"}>深度優先 (Depth First)</MenuItem>
+									<MenuItem value={"Breadth First"}>廣度優先 (Breadth First)</MenuItem>
 								</Select>
 							)}
 							{description}
