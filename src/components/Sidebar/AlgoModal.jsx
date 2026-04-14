@@ -65,7 +65,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 							<li>當佇列不為空時：</li>
 							<ol>
 								<li>
-									從佇列中彈出 (Pop) 一個單元格並將其設為當前單元格。
+									從佇列中取出一個單元格，並將其設為當前單元格。
 								</li>
 								<li>
 									如果當前單元格有任何尚未被訪問過的相鄰單元格：
@@ -73,7 +73,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 								<ol>
 									<li>將當前單元格推入佇列。</li>
 									<li>
-										從未訪問的相鄰單元格中選擇一個。
+										從未訪問的相鄰單元格中隨機選擇一個。
 									</li>
 									<li>
 										移除當前單元格與所選單元格之間的牆壁。
@@ -91,12 +91,12 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							這個演算法是 Kruskal 演算法的隨機化版本。
+							這個演算法是克魯斯克爾 (Kruskal) 演算法的隨機化版本。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								建立一個包含所有牆壁的列表，並為每個單元格建立一個集合，每個集合最初只包含該單元格本身。
+								建立一個包含所有牆壁的列表，並為每個單元格建立一個獨立的集合，每個集合最初只包含該單元格本身。
 							</li>
 
 							<li>以隨機順序遍歷每一面牆壁：</li>
@@ -107,7 +107,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 								<ol>
 									<li>移除當前牆壁。</li>
 									<li>
-										將這兩個原本被隔開的單元格所在的集合聯集。
+										將這兩個原本被隔開的單元格所在的集合合併。
 									</li>
 								</ol>
 							</ol>
@@ -119,7 +119,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							這個演算法是 Prim 演算法的隨機化版本。
+							這個演算法是普林 (Prim) 演算法的隨機化版本。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
@@ -138,7 +138,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 										將這面牆變成通道，並將那個未被訪問過的單元格標記為迷宮的一部分。
 									</li>
 									<li>
-										將這個新加入單元格周圍的牆壁加入牆壁列表。
+										將這個新加入單元格周圍的牆壁也加入牆壁列表。
 									</li>
 								</ol>
 								<li>將該牆壁從列表中移除。</li>
@@ -163,7 +163,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							Aldous-Broder 演算法由於其隨機性，能夠產生均勻生成樹 (Uniform spanning trees)。
+							阿爾多斯-布羅德 (Aldous-Broder) 演算法由於其隨機性，能夠產生均勻生成樹 (Uniform spanning trees)。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
@@ -186,7 +186,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 									</li>
 								</ol>
 								<li>
-									將所選相鄰單元格設為當前單元格。
+									將所選相鄰單元格設為當前的單元格。
 								</li>
 							</ol>
 						</ol>
@@ -197,7 +197,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							上述所有演算法都有不同種類的<span>偏差 (Biases)</span>：深度優先搜尋偏好長走廊，而 Kruskal / Prim 演算法則偏好大量短小的死胡同。另一方面，Wilson 演算法使用<span>消除迴圈的隨機漫步 (Loop-erased random walks)</span>，能從所有迷宮的均勻分佈中產生<span>無偏差 (Unbiased)</span> 的樣本。
+							上述所有演算法都有不同種類的<span>偏差 (Biases)</span>：深度優先搜尋偏好長走廊，而 Kruskal 或 Prim 演算法則偏好大量短小的死胡同。另一方面，威爾遜 (Wilson) 演算法使用<span>消除迴圈的隨機漫步 (Loop-erased random walks)</span>，能從所有迷宮的均勻分佈中產生<span>無偏差 (Unbiased)</span> 的樣本。
 						</p>
 						<p>
 							演算法開始時，我們先初始化迷宮，<span>任意選擇一個單元格加入迷宮</span>。接著，我們從另一個任意選擇的單元格開始，並<span>執行隨機漫步，直到我們走到一個已經在迷宮中的單元格</span>。然而，如果隨機漫步在任何時候走到了<span>它自己剛才走過的路徑</span>（形成了一個迴圈），我們在繼續前進之前會<span>將這個迴圈從路徑中消除</span>。當路徑接觸到迷宮主體時，我們<span>將這條路徑加入迷宮中</span>。接著，我們再從另一個任意起始點執行<span>另一次</span>消除迴圈的隨機漫步，重複這個過程直到所有單元格都被填滿。
@@ -217,15 +217,15 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							A* 是一種啟發式搜尋 (Informed search) 演算法，保證能找到最短路徑。
+							A星 (A*) 是一種啟發式搜尋 (Informed search) 演算法，且保證能找到最短路徑。
 						</p>
 						<p>
-							A* 是 Dijkstra 和貪婪演算法 (Greedy) 的結合。它利用「從起始節點出發的實際距離」加上「到達目標節點的啟發式預估距離」。當我們找到目標節點時，演算法就會終止。
+							A* 是 Dijkstra 和貪婪演算法的結合。它利用「從起始節點出發的實際距離」加上「到達目標節點的預估距離（啟發值）」。當我們找到目標節點時，演算法就會終止。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								將所有節點的距離 dis[v] 設為 INT_MAX（包含從起始節點出發的距離 + 每個節點的啟發值）。
+								將所有節點的距離 dis[v] 設為無限大（代表從起始點的距離 + 每個節點的啟發值）。
 							</li>
 
 							<li>
@@ -237,10 +237,10 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 							</li>
 							<ol>
 								<li>
-									在每次迴圈中，選擇佇列中（從起始點的距離 + 啟發值）最小的節點（起始節點會最先被選中）。
+									在每次迴圈中，選擇佇列裡總距離（距離起始點 + 啟發值）最小的節點（起始節點會最先被選中）。
 								</li>
 								<li>
-									將當前選中的節點從佇列中移除 (vis[current] = true)。
+									將當前選中的節點從佇列中移除，並標記為已訪問 (vis[current] = true)。
 								</li>
 								<li>
 									如果當前節點是目標節點，則回傳它。
@@ -250,15 +250,15 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 								</li>
 								<ol>
 									<li>
-										指派 temp = distance(root, current) + distance(current, child) + heuristic(child, goal)。
+										計算暫存距離 temp = distance(root, current) + distance(current, child) + heuristic(child, goal)。
 									</li>
 									<li>
 										如果
-										{` temp < dis[child]，則指派 dis[child] = temp`}
+										{` temp < dis[child]，則更新 dis[child] = temp`}
 										。這表示我們找到了一條通往子節點更短的路徑。
 									</li>
 									<li>
-										如果子節點不在佇列中，則將其加入佇列（因此它現在再次被標記為未訪問）。
+										如果子節點不在佇列中，則將其加入佇列（代表它需要再次被探索）。
 									</li>
 								</ol>
 							</ol>
@@ -270,19 +270,19 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							Dijkstra 是一種啟發式搜尋演算法，保證能找到最短路徑。
+							戴克斯特拉 (Dijkstra) 是一種啟發式搜尋演算法，且保證能找到最短路徑。
 						</p>
 						<p>
-							Dijkstra 演算法試圖找出從起始（根）節點到每一個節點的最短路徑，因此我們可以得到從起始節點到目標的最短路徑。
+							Dijkstra 演算法試圖找出從起始節點到每一個節點的最短路徑，因此我們最終能得到從起始點到目標點的最短路徑。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								將所有節點的距離 dis[v] 設為 INT_MAX（從起始節點到所有其他節點的距離）。
+								將所有節點的距離 dis[v] 設為無限大（代表從起始節點到所有其他節點的距離）。
 							</li>
 
 							<li>
-								將起始節點的距離 dis[root] = 0（起始節點到自身的距離）。
+								將起始節點的距離 dis[root] 設為 0（起始點到自身的距離）。
 							</li>
 							<li>將所有節點加入優先佇列。</li>
 							<li>
@@ -290,10 +290,10 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 							</li>
 							<ol>
 								<li>
-									在每次迴圈中，選擇佇列裡距離起始節點最近的節點（起始節點會最先被選中）。
+									在每次迴圈中，選擇佇列裡距離起始點最近的節點（起始節點會最先被選中）。
 								</li>
 								<li>
-									將當前選中的節點從佇列中移除 (vis[current] = true)。
+									將當前選中的節點從佇列中移除，並標記為已訪問 (vis[current] = true)。
 								</li>
 								<li>
 									如果當前選中的節點是目標節點，則回傳它。
@@ -303,15 +303,15 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 								</li>
 								<ol>
 									<li>
-										如果子節點不在佇列中（已被訪問過），則跳過本次迭代。
+										如果子節點已經被訪問過（不在佇列中），則跳過本次迭代。
 									</li>
 									<li>
-										指派 temp = dis[current] + (從當前節點到子節點的距離)。
+										計算暫存距離 temp = dis[current] + (從當前節點到子節點的距離)。
 									</li>
 									<li>
 										如果{" "}
 										{
-											"temp < dis[child]，則指派 dis[child] = temp"
+											"temp < dis[child]，則更新 dis[child] = temp"
 										}
 										。這表示我們找到了一條通往子節點更短的路徑。
 									</li>
@@ -328,16 +328,16 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 							貪婪演算法 (Greedy) 是一種啟發式搜尋演算法，但不保證能找到最短路徑。
 						</p>
 						<p>
-							貪婪演算法在每個階段都會根據經驗法則（啟發式預估，Heuristics）做出選擇。啟發式距離目標節點最短的節點將會被優先探索。
+							貪婪演算法在每個階段都會根據經驗法則（啟發式預估）做出選擇。預估距離目標節點最近的節點將會被優先探索。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
 							<li>
-								將所有節點的距離 dis[v] 設為 INT_MAX（從每個節點到目標節點的預估距離）。
+								將所有節點的距離 dis[v] 設為無限大（代表從每個節點到目標節點的預估距離）。
 							</li>
 
 							<li>
-								將起始節點的距離 dis[root] = 0（起始節點到自身的距離）。
+								將起始節點的距離 dis[root] 設為 0（起始點到自身的距離）。
 							</li>
 							<li>將起始節點加入優先佇列。</li>
 							<li>
@@ -345,10 +345,10 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 							</li>
 							<ol>
 								<li>
-									在每次迴圈中，選擇佇列裡距離目標節點啟發式距離最小的節點（起始節點會最先被選中）。
+									在每次迴圈中，選擇佇列裡預估距離目標節點最小的節點（起始節點會最先被選中）。
 								</li>
 								<li>
-									將當前選中的節點從佇列中移除 (vis[current] = true)。
+									將當前選中的節點從佇列中移除，並標記為已訪問 (vis[current] = true)。
 								</li>
 								<li>
 									如果當前選中的節點是目標節點，則回傳它。
@@ -361,7 +361,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 										如果子節點已經被訪問過（之前已從佇列中移除），則跳過本次迭代。
 									</li>
 									<li>
-										指派 dis[current] = heuristics(current, goal)（即當前節點的啟發值）。
+										更新 dis[current] = heuristics(current, goal)（即當前節點的啟發值）。
 									</li>
 									<li>將子節點加入佇列。</li>
 								</ol>
@@ -377,11 +377,11 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 							深度優先搜尋 (Depth-First Search) 不是一種啟發式搜尋演算法，且不保證能找到最短路徑。
 						</p>
 						<p>
-							它從起始節點開始，探索其中一個相鄰節點的子樹，然後再移動到下一個相鄰節點的子樹，依此類推。
+							它從起始節點開始，深入探索其中一個相鄰節點的子分支，碰壁後再移動到下一個相鄰節點的分支，依此類推。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
-							<li>將起始節點加入佇列（此處實作通常為堆疊 Stack 行為）。</li>
+							<li>將起始節點加入佇列（實務上為堆疊結構）。</li>
 
 							<li>
 								只要佇列不為空，就持續迴圈：
@@ -395,7 +395,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 								</li>
 								<ol>
 									<li>
-										檢查它是否為目標節點。如果是，則回傳此相鄰節點。
+										檢查它是否為目標節點。如果是，則回傳此節點。
 									</li>
 									<li>否則，將其推入佇列中。</li>
 								</ol>
@@ -408,10 +408,10 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 				description = (
 					<>
 						<p>
-							廣度優先搜尋 (Breadth-First Search) 不是一種啟發式搜尋演算法，但保證能找到最短路徑（在無權重圖中）。
+							廣度優先搜尋 (Breadth-First Search) 不是一種啟發式搜尋演算法，但保證能找到最短路徑（在無權重網格中）。
 						</p>
 						<p>
-							它從起始節點開始，在移動到下一層之前會先探索當前層級的所有相鄰節點。接著，它會探索這些相鄰節點的相鄰節點，依此類推。
+							它從起始節點開始，在往下一層深入之前，會先探索完當前層級的所有相鄰節點。接著，它再探索這些相鄰節點的相鄰節點，依此類推。
 						</p>
 						<h3>演算法步驟</h3>
 						<ol>
@@ -434,7 +434,7 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 									<li>
 										檢查它是否為目標節點。如果是，則回傳它。
 									</li>
-									<li>否則，將其推入佇列中。</li>
+									<li>否則，將其推入佇列尾端。</li>
 								</ol>
 							</ol>
 						</ol>
@@ -488,12 +488,14 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 									name={"maze"}
 									onChange={handleChange}
 								>
-									<MenuItem value={"DFS"}>DFS (深度優先)</MenuItem>
-									<MenuItem value={"Kruskal"}>Kruskal</MenuItem>
-									<MenuItem value={"Prim"}>Prim</MenuItem>
+									<MenuItem value={"DFS"}>深度優先 (DFS)</MenuItem>
+									<MenuItem value={"Kruskal"}>克魯斯克爾 (Kruskal)</MenuItem>
+									<MenuItem value={"Prim"}>普林 (Prim)</MenuItem>
 									<MenuItem value={"Recursive"}>遞迴分割 (Recursive)</MenuItem>
-									<MenuItem value={"Aldous-Broder"}>Aldous-Broder</MenuItem>
-									<MenuItem value={"Wilson"}>Wilson</MenuItem>
+									<MenuItem value={"Aldous-Broder"}>
+										阿爾多斯-布羅德 (Aldous-Broder)
+									</MenuItem>
+									<MenuItem value={"Wilson"}>威爾遜 (Wilson)</MenuItem>
 								</Select>
 							) : (
 								<Select
@@ -502,11 +504,15 @@ function AlgoModal({ open, setOpen, mazeType, searchType }) {
 									name={"search"}
 									onChange={handleChange}
 								>
-									<MenuItem value={"A*"}>A*</MenuItem>
-									<MenuItem value={"Dijkstra"}>Dijkstra</MenuItem>
-									<MenuItem value={"Greedy"}>Greedy (貪婪)</MenuItem>
-									<MenuItem value={"Depth First"}>深度優先 (Depth First)</MenuItem>
-									<MenuItem value={"Breadth First"}>廣度優先 (Breadth First)</MenuItem>
+									<MenuItem value={"A*"}>A星 (A*)</MenuItem>
+									<MenuItem value={"Dijkstra"}>戴克斯特拉 (Dijkstra)</MenuItem>
+									<MenuItem value={"Greedy"}>貪婪演算法 (Greedy)</MenuItem>
+									<MenuItem value={"Depth First"}>
+										深度優先搜尋 (DFS)
+									</MenuItem>
+									<MenuItem value={"Breadth First"}>
+										廣度優先搜尋 (BFS)
+									</MenuItem>
 								</Select>
 							)}
 							{description}
