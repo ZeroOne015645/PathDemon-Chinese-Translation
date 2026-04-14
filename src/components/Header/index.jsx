@@ -19,7 +19,7 @@ export default function Header() {
 		<StyledHeader>
 			<span>PATH DEMON</span>
 			<div className="btns">
-				<a href="https://github.com/copperhuh/PathDemon">
+				<a href="https://github.com/ZeroOne015645/PathDemon-Chinese-Translation">
 					<button>
 						<GitHubIcon sx={{ fontSize: "2.4rem" }} />
 					</button>
