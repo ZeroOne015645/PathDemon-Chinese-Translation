@@ -110,14 +110,14 @@ function Sidebar({
 							name={"mazeType"}
 							onChange={handleChange}
 						>
-							<MenuItem value={"DFS"}>DFS (深度優先)</MenuItem>
-							<MenuItem value={"Kruskal"}>Kruskal</MenuItem>
-							<MenuItem value={"Prim"}>Prim</MenuItem>
+							<MenuItem value={"DFS"}>深度優先 (DFS)</MenuItem>
+							<MenuItem value={"Kruskal"}>克魯斯克爾 (Kruskal)</MenuItem>
+							<MenuItem value={"Prim"}>普林 (Prim)</MenuItem>
 							<MenuItem value={"Recursive"}>遞迴分割 (Recursive)</MenuItem>
 							<MenuItem value={"Aldous-Broder"}>
-								Aldous-Broder
+								阿爾多斯-布羅德 (Aldous-Broder)
 							</MenuItem>
-							<MenuItem value={"Wilson"}>Wilson</MenuItem>
+							<MenuItem value={"Wilson"}>威爾遜 (Wilson)</MenuItem>
 						</Select>
 					</FormControl>
 				</div>
@@ -145,14 +145,14 @@ function Sidebar({
 							name={"searchType"}
 							onChange={handleChange}
 						>
-							<MenuItem value={"A*"}>A*</MenuItem>
-							<MenuItem value={"Dijkstra"}>Dijkstra</MenuItem>
-							<MenuItem value={"Greedy"}>Greedy (貪婪)</MenuItem>
+							<MenuItem value={"A*"}>A星 (A*)</MenuItem>
+							<MenuItem value={"Dijkstra"}>戴克斯特拉 (Dijkstra)</MenuItem>
+							<MenuItem value={"Greedy"}>貪婪演算法 (Greedy)</MenuItem>
 							<MenuItem value={"Depth First"}>
-								深度優先 (Depth First)
+								深度優先搜尋 (DFS)
 							</MenuItem>
 							<MenuItem value={"Breadth First"}>
-								廣度優先 (Breadth First)
+								廣度優先搜尋 (BFS)
 							</MenuItem>
 						</Select>
 					</FormControl>
