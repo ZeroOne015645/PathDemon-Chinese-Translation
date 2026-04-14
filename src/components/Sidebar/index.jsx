@@ -69,7 +69,7 @@ function Sidebar({
 		<StyledSidebar>
 			<div className="sidebar-section">
 				<div className="sidebar-element">
-					GRID SIZE
+					網格大小
 					<Slider
 						disabled={visualizationOngoing}
 						className="slider"
@@ -84,7 +84,7 @@ function Sidebar({
 					/>
 				</div>
 				<div className="sidebar-element">
-					DELAY
+					延遲時間
 					<Slider
 						className="slider"
 						name="delay"
@@ -101,7 +101,7 @@ function Sidebar({
 				<div className="sidebar-element">
 					<FormControl fullWidth>
 						<InputLabel className="label" id="select-label">
-							MAZE ALGORITHM
+							迷宮演算法
 						</InputLabel>
 						<Select
 							labelId="select-label"
@@ -110,10 +110,10 @@ function Sidebar({
 							name={"mazeType"}
 							onChange={handleChange}
 						>
-							<MenuItem value={"DFS"}>DFS</MenuItem>
+							<MenuItem value={"DFS"}>DFS (深度優先)</MenuItem>
 							<MenuItem value={"Kruskal"}>Kruskal</MenuItem>
 							<MenuItem value={"Prim"}>Prim</MenuItem>
-							<MenuItem value={"Recursive"}>Recursive</MenuItem>
+							<MenuItem value={"Recursive"}>遞迴分割 (Recursive)</MenuItem>
 							<MenuItem value={"Aldous-Broder"}>
 								Aldous-Broder
 							</MenuItem>
@@ -128,7 +128,7 @@ function Sidebar({
 							handleGenerate("maze");
 						}}
 					>
-						GENERATE MAZE
+						生成迷宮
 					</button>
 				</div>
 			</div>
@@ -136,7 +136,7 @@ function Sidebar({
 				<div className="sidebar-element">
 					<FormControl fullWidth>
 						<InputLabel className="label" id="select-label">
-							SEARCH ALGORITHM
+							尋路演算法
 						</InputLabel>
 						<Select
 							labelId="select-label"
@@ -147,12 +147,12 @@ function Sidebar({
 						>
 							<MenuItem value={"A*"}>A*</MenuItem>
 							<MenuItem value={"Dijkstra"}>Dijkstra</MenuItem>
-							<MenuItem value={"Greedy"}>Greedy</MenuItem>
+							<MenuItem value={"Greedy"}>Greedy (貪婪)</MenuItem>
 							<MenuItem value={"Depth First"}>
-								Depth First
+								深度優先 (Depth First)
 							</MenuItem>
 							<MenuItem value={"Breadth First"}>
-								Breadth First
+								廣度優先 (Breadth First)
 							</MenuItem>
 						</Select>
 					</FormControl>
@@ -164,7 +164,7 @@ function Sidebar({
 							handleGenerate("path");
 						}}
 					>
-						GENERATE PATH
+						生成路徑
 					</button>
 				</div>
 			</div>
@@ -179,7 +179,7 @@ function Sidebar({
 								hiddenSidebarSetOpen(false);
 						}}
 					>
-						SKIP
+						跳過
 					</button>
 				</div>
 				<div className="sidebar-element">
@@ -191,7 +191,7 @@ function Sidebar({
 								hiddenSidebarSetOpen(false);
 						}}
 					>
-						CLEAR GRID
+						清除網格
 					</button>
 				</div>
 				<div className="sidebar-element">
@@ -199,7 +199,7 @@ function Sidebar({
 						className="large"
 						onClick={() => setAlgoModalOpen(true)}
 					>
-						ALGORITHM <span>INFO</span>
+						演算法 <span>說明</span>
 					</button>
 				</div>
 			</div>
