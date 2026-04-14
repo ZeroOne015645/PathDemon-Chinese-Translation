@@ -32,7 +32,7 @@ export default function InfoModal({ open, setOpen }) {
 						>
 							<CloseIcon sx={{ fontSize: "2.7rem" }} />
 						</button>
-						<h3>Grid Legend</h3>
+						<h3>圖例說明</h3>
 						<div className="legend">
 							<div className="legend-section">
 								<div className="node start">
@@ -40,28 +40,28 @@ export default function InfoModal({ open, setOpen }) {
 										sx={{ fontSize: "1.8rem" }}
 									/>
 								</div>
-								start node
+								起點節點
 							</div>
 							<div className="legend-section">
 								<div className="node target">
 									<FlagIcon sx={{ fontSize: "1.8rem" }} />
 								</div>
-								target node
+								目標節點
 							</div>
 							<div className="legend-section">
-								<div className="node empty"></div>unvisited node
+								<div className="node empty"></div>未訪問節點
 							</div>
 							<div className="legend-section">
-								<div className="node wall"></div>wall node
+								<div className="node wall"></div>牆壁節點
 							</div>
 							<div className="legend-section">
-								<div className="node visited"></div>visited node
+								<div className="node visited"></div>已訪問節點
 							</div>
 							<div className="legend-section">
-								<div className="node queued"></div>queued node
+								<div className="node queued"></div>待訪問節點
 							</div>
 							<div className="legend-section">
-								<div className="node path"></div>path node
+								<div className="node path"></div>路徑節點
 							</div>
 						</div>
 					</motion.div>
