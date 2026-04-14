@@ -2,7 +2,7 @@
 	"name": "path-finder",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "https://copperhuh.github.io/PathDemon/",
+	"homepage": "https://zeroone015645.github.io/PathDemon-Chinese-Translation",
 	"dependencies": {
 		"@emotion/react": "^11.8.2",
 		"@emotion/styled": "^11.8.1",
